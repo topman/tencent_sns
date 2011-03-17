@@ -232,12 +232,12 @@ class pengyou(object):
 if __name__ == '__main__':
     socket.setdefaulttimeout(5)
 
-    appid = 0
-    appkey = ''
-    appname = ''
+    appid = 18157
+    appkey = '3f1e158d8cf94a26a3131cda7ed92f99'
+    appname = 'app18157'
 
-    openid = ''
-    openkey = ''
+    openid = '0000000000000000000000000FB01EE6'
+    openkey = '5F29C898CF52F31E5CDA77D5FAAF9963C9F4298AED680FB6'
 
     api = pengyou(appid,appkey,appname,('openapi.pengyou.qq.com',))
 

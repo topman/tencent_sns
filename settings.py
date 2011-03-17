@@ -3,6 +3,9 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+import os
+ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -93,4 +96,20 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    "service",
 )
+### Logging settings
+LOGGING_DIR = ROOT_PATH
+import logging
+from logging.handlers import TimedRotatingFileHandler, SMTPHandler
+root = logging.getLogger()
+LOG = True
+if LOG and len(root.handlers) == 0:
+    level = logging.DEBUG
+    filename = os.path.join(LOGGING_DIR, 'logs', 'filelog.log')
+    format = '%(asctime)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d %(message)s'
+    hdlr = TimedRotatingFileHandler(filename, 'midnight', 1, 100)
+    fmt = logging.Formatter(format)
+    hdlr.setFormatter(fmt)
+    root.addHandler(hdlr)
+    root.setLevel(level)
